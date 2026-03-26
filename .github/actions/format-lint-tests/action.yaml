@@ -1,0 +1,38 @@
+name: "Format, Lint and Tests"
+description: "Runs Prettier, ESLint, Vitest and E2E Playwright tests"
+runs:
+  using: "composite"
+  steps:
+    - name: Check format
+      run: npx prettier --check "frontend/**/*.{ts,tsx,js,jsx,json,css}"
+      shell: bash
+
+    - name: Run lint
+      run: npm run lint -w sincreator-frontend
+      shell: bash
+
+    - name: Run unit tests (Vitest)
+      id: vitest
+      run: npm run test -w sincreator-frontend -- --reporter=html
+      shell: bash
+
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+      working-directory: ./frontend
+      shell: bash
+
+    - name: Run E2E tests (Playwright)
+      id: playwright
+      run: npm run test:e2e -w sincreator-frontend
+      shell: bash
+
+    - name: Upload test reports
+      if: failure() && (steps.vitest.outcome == 'failure' || steps.playwright.outcome == 'failure')
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-failure-reports
+        path: |
+          frontend/html/
+          frontend/playwright-report/
+        if-no-files-found: ignore
+        retention-days: 7

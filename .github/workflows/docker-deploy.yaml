@@ -1,0 +1,64 @@
+name: Reusable Docker build and deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'Deply environment (test or prod)'
+        required: true
+        type: string
+      image_tag:
+        description: 'Image tag'
+        required: true
+        type: string
+      use_artifact:
+        description: 'Should use previous generated build?'
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      DOCKER_USERNAME:
+        required: true
+      DOCKERHUB_TOKEN:
+        required: true
+
+jobs:
+  build-and-push:
+    name: Build and push Docker image
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Download artifact
+        if: ${{ inputs.use_artifact == true }}
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend/dist/
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: frontend/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/sincreator:${{ inputs.image_tag }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/sincreator:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/sincreator:buildcache,mode=max
+
+      - name: Deploy para o Ambiente
+        run: |
+          echo "Deploying to environment: ${{ inputs.environment }}"
+          echo "Image: sincreator:${{ inputs.image_tag }}"

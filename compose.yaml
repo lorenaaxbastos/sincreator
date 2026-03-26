@@ -1,0 +1,45 @@
+services:
+  prod:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: sincreator
+    ports:
+      - "8080:8080"
+
+  dev:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.dev
+    ports:
+      - "5173:5173"
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app/frontend
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./frontend/package.json
+
+  storybook:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.dev
+    command: ["npm", "run", "storybook"]
+    ports:
+      - "6006:6006"
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app/frontend
+          ignore:
+            - node_modules/
+
+  test:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.dev
+    command: ["npm", "run", "test"]

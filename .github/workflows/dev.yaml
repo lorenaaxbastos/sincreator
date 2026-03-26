@@ -1,0 +1,22 @@
+name: DEV Pipeline
+
+on:
+  pull_request:
+    branches: [dev]
+
+jobs:
+  validate:
+    name: Validate PR to DEV
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js and cache dependencies
+        uses: ./.github/actions/setup-and-cache
+
+      - name: Build app
+        run: npm run build -w sincreator-frontend
+
+      - name: Quality (format, lint, tests)
+        uses: ./.github/actions/format-lint-tests

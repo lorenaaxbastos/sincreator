@@ -1,0 +1,55 @@
+name: MAIN Pipeline
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  quality-gate:
+    name: Quality gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js and cache dependencies
+        uses: ./.github/actions/setup-and-cache
+
+      - name: Quality (format, lint, tests)
+        uses: ./.github/actions/format-lint-tests
+
+  release:
+    name: Semantic release
+    needs: quality-gate
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.semantic.outputs.new_release_version }}
+    steps:
+      - name: Get code with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js and cache dependencies
+        uses: ./.github/actions/setup-and-cache
+
+      - name: Run semantic release
+        id: semantic
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
+
+  deploy-prod:
+    name: Deploy to production
+    needs: release
+    if: needs.release.outputs.new_version != ''
+    uses: ./.github/workflows/docker-deploy.yml
+    with:
+      environment: prod
+      use_artifact: false
+      image_tag: v${{ needs.release.outputs.new_version }}
+    secrets: inherit
