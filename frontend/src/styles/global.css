@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+@import './tokens.css';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  user-select: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  font-family: 'Onest', sans-serif;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-md);
+  color: var(--color-text-body);
+  background-color: var(--color-bg-canvas);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-title);
+  font-weight: var(--font-weight-semi);
+  font-size: var(--font-size-heading);
+  line-height: var(--line-height-sm);
+}
+
+h1 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-display);
+}
+
+input,
+textarea {
+  user-select: text;
+}
+
+button,
+a {
+  cursor: pointer;
+}

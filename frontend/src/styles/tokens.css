@@ -1,0 +1,94 @@
+:root {
+  /* Spacing */
+  --space-xxs: 0.4rem;
+  --space-xs: 0.8rem;
+  --space-sm: 1.2rem;
+  --space-md: 1.6rem;
+  --space-lg: 2.4rem;
+  --space-xl: 3.2rem;
+  --space-xxl: 4.8rem;
+
+  /* Font sizes */
+  --font-size-caption: 1.2rem;
+  --font-size-body: 1.6rem;
+  --font-size-subheading: 2rem;
+  --font-size-heading: 2.4rem;
+  --font-size-display: 3.6rem;
+
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semi: 500;
+  --font-weight-bold: 700;
+
+  /* Line height */
+  --line-height-sm: 1.2;
+  --line-height-md: 1.5;
+  --line-height-lg: 1.8;
+
+  /* Border and border radius */
+  --border-size-sm: 1px;
+  --border-size-md: 3px;
+  --border-size-lg: 5px;
+
+  --border-radius-sm: 0.4rem;
+  --border-radius-md: 0.8rem;
+  --border-radius-lg: 1.6rem;
+  --border-radius-pill: 999px;
+  --border-radius-round: 50%;
+
+  /* Transitions */
+  --transition-smooth: 0.3s ease;
+  --transition-fast: 0.1s ease;
+
+  /* Color pallete */
+  --color-cyan: #39b4af;
+  --color-cyan-light: #c9eeed;
+  --color-blue: #4a50c6;
+  --color-blue-light: #c9cbee;
+  --color-pink: #ff526b;
+  --color-pink-light: #fbd3da;
+  --color-yellow: #dea24f;
+  --color-yellow-light: #f6e6d0;
+
+  --color-offwhite: #fff7ee;
+  --color-white: #ffffff;
+  --color-gray50: #f8f9fa;
+  --color-gray100: #efefe9;
+  --color-gray200: #e6e6de;
+  --color-gray700: #495057;
+  --color-gray800: #343a40;
+  --color-gray900: #212529;
+  --color-black: #000000;
+}
+
+/* Themes - Light by default */
+:root {
+  /* Colors */
+  --color-bg-canvas: var(--color-offwhite);
+  --color-bg-sidebar: var(--color-cyan);
+  --color-bg-tablerow: var(--color-gray200);
+  --color-text-title: var(--color-gray900);
+  --color-text-body: var(--color-gray700);
+  --color-text-link: var(--color-blue);
+  --color-text-inverse: var(--color-white);
+  --color-theme-toggle-icon: var(--color-blue);
+  --color-theme-toggle-icon-hover: var(--color-blue-light);
+  --color-theme-toggle-button: var(--color-blue-light);
+  --color-theme-toggle-button-hover: var(--color-blue);
+}
+
+[data-theme='dark'] {
+  /* Colors */
+  --color-bg-canvas: var(--color-gray900);
+  --color-bg-sidebar: var(--color-gray800);
+  --color-bg-tablerow: var(--color-gray800);
+  --color-text-title: var(--color-gray50);
+  --color-text-body: var(--color-gray200);
+  --color-text-link: var(--color-cyan);
+  --color-text-inverse: var(--color-gray900);
+  --color-theme-toggle-icon: var(--color-yellow);
+  --color-theme-toggle-icon-hover: var(--color-yellow-light);
+  --color-theme-toggle-button: var(--color-yellow-light);
+  --color-theme-toggle-button-hover: var(--color-yellow);
+}
