@@ -1,6 +1,7 @@
 {
   "name": "sincreator-monorepo",
   "private": true,
+  "type": "module",
   "workspaces": [
     "frontend",
     "backend"
