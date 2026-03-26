@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js and cache dependencies
-        uses: ./.github/actions/setup-and-cache
+        uses: ./.github/actions/setup-cache-install
 
       - name: Quality (format, lint, tests)
         uses: ./.github/actions/format-lint-tests
