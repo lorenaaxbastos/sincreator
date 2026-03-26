@@ -35,7 +35,7 @@ jobs:
     name: Deploy to test environment
     needs: validate-and-build
     if: github.event_name == 'push'
-    uses: ./.github/workflows/docker-deploy.yml
+    uses: ./.github/workflows/docker-deploy.yaml
     with:
       environment: test
       use_artifact: true

@@ -47,7 +47,7 @@ jobs:
     name: Deploy to production
     needs: release
     if: needs.release.outputs.new_version != ''
-    uses: ./.github/workflows/docker-deploy.yml
+    uses: ./.github/workflows/docker-deploy.yaml
     with:
       environment: prod
       use_artifact: false
