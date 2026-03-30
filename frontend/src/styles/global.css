@@ -32,6 +32,7 @@ h3,
 h4,
 h5,
 h6 {
+  width: fit-content;
   color: var(--color-text-title);
   font-weight: var(--font-weight-semi);
   font-size: var(--font-size-heading);
@@ -41,6 +42,20 @@ h6 {
 h1 {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-display);
+}
+
+h2 {
+  font-size: var(--font-size-heading);
+  padding: var(--space-sm) var(--space-xl);
+  font-weight: var(--font-weight-semi);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: var(--color-blue-light);
+}
+
+h3 {
+  font-size: var(--font-size-subheading);
+  font-weight: var(--font-weight-semi);
 }
 
 input,
