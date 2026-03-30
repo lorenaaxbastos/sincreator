@@ -1,0 +1,17 @@
+.container {
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.box {
+  background-color: var(--color-gray100);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-md);
+}
+
+.box.constrained {
+  height: 30rem;
+  overflow-y: scroll;
+}
