@@ -1,0 +1,29 @@
+.container {
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.list {
+}
+
+.item {
+  display: flex;
+  gap: 1rem;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.term {
+  display: inline-block;
+  width: fit-content;
+  padding: 0 var(--space-xs);
+  font-weight: var(--font-weight-semi);
+  background-color: var(--color-cyan-light);
+}
+
+.description {
+}
