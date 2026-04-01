@@ -6,9 +6,13 @@
 }
 
 .box {
-  background-color: var(--color-gray100);
   padding: var(--space-md);
+  background-color: var(--briefing-content-color, var(--color-yellow-light));
   border-radius: var(--border-radius-md);
+
+  * {
+    user-select: text;
+  }
 }
 
 .box.constrained {

@@ -22,7 +22,7 @@
   width: fit-content;
   padding: 0 var(--space-xs);
   font-weight: var(--font-weight-semi);
-  background-color: var(--color-cyan-light);
+  background-color: var(--summary-term-color, var(--color-cyan-light));
 }
 
 .description {

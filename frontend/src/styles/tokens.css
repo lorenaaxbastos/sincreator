@@ -1,4 +1,7 @@
 :root {
+  /* Page settings */
+  --page-padding: 1rem;
+
   /* Spacing */
   --space-xxs: 0.4rem;
   --space-xs: 0.8rem;
@@ -12,8 +15,8 @@
   --font-size-caption: 1.2rem;
   --font-size-body: 1.6rem;
   --font-size-subheading: 2rem;
-  --font-size-heading: 2.4rem;
-  --font-size-display: 3.6rem;
+  --font-size-heading: 3rem;
+  --font-size-display: 4rem;
 
   /* Font weights */
   --font-weight-light: 300;
