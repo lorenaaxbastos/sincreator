@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import styles from './CreationBriefing.module.css';
 
-interface CreationBriefingProps {
+export interface CreationBriefingProps {
   content: ReactNode;
   variant: 'free' | 'constrained';
 }
@@ -16,7 +16,7 @@ export const CreationBriefing = ({ content, variant }: CreationBriefingProps) =>
       </h3>
       <div
         data-testid="briefing-box"
-        className={`${styles.box} ${variant === 'constrained' ? styles.constrained : ''}`}
+        className={`${styles.box} ${variant === 'constrained' ? styles.constrained : ''}`.trim()}
         tabIndex={variant === 'constrained' ? 0 : undefined}
       >
         {content}
