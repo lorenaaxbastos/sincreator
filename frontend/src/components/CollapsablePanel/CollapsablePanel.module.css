@@ -1,0 +1,43 @@
+.container {
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: var(--space-xxs) var(--space-xs);
+  font-family: inherit;
+  font-size: var(--font-size-subheading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-title);
+  background-color: var(--color-blue-light);
+  border: none;
+}
+
+.heading {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+}
+
+.content {
+  margin-top: 2rem;
+  transition: all var(--transition-smooth);
+}
+
+.content.collapsed {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 0;
+}
+
+.icon {
+  color: inherit;
+  transition: transform var(--transition-smooth);
+}
+
+.icon.collapsed {
+  transform: rotate(-180deg);
+}
