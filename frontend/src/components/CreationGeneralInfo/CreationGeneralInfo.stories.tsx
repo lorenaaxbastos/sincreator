@@ -68,7 +68,7 @@ export const SplitScreenActive: Story = {
     briefingProps: mockBriefingProps,
     isSplitScreen: true,
     onToggleSplitScreen: () => {
-      alert('Botão clicado! O pai vai mudar o isSplitScreen para false.');
+      alert('Button clicked! Parent will change isSplitScreen to false.');
     },
   },
 };
@@ -79,7 +79,7 @@ export const OnlySummary: Story = {
     briefingProps: null,
     isSplitScreen: false,
     onToggleSplitScreen: () => {
-      alert('Botão clicado! O pai vai mudar o isSplitScreen para true.');
+      alert('Button clicked! Parent will change isSplitScreen to true.');
     },
   },
 };
@@ -90,7 +90,7 @@ export const OnlyBriefing: Story = {
     briefingProps: mockBriefingProps,
     isSplitScreen: false,
     onToggleSplitScreen: () => {
-      alert('Botão clicado! O pai vai mudar o isSplitScreen para true.');
+      alert('Button clicked! Parent will change isSplitScreen to true.');
     },
   },
 };
