@@ -1,0 +1,54 @@
+# Regras de negócio para o componente planejamento / criação
+
+- Ele é um formulário com vários campos, que formam uma linha do tempo.
+- Há um botão que alterna entre o modo planejamento e criação.
+- No modo planejamento, são exibidos os campos: nome da formação, resumo da formação, objetivos gerais da formação, objetivos específicos da formação, programação da formação.
+- A programação é um componente que permite a adição e remoção de blocos.
+- Cada bloco exibe diferentes campos nos modos planejamento e criação.
+- Só é possível adicionar e remover blocos no modo planejamento.
+- Cada bloco possui no mínimo um nome e uma duração.
+- Não é possível mudar para o modo criação até que as durações de todos os blocos do planejamento somem a duração da formação (esse valor é o mesmo que vai para o componente sumário).
+- Desde que as durações dos blocos somem a duração da formação, é possível alternar entre os modos de planejamento e duração sem problemas.
+- No modo planejamento, além de nome e duração, cada bloco possui os seguintes campos para preenchimento: nome, mensagens centrais, objetivos de aprendizagem, evidências de aprendizagem, experiências de aprendizagem e atividades.
+- É possível adicionar nenhuma ou várias atividades.
+- Cada atividade tem um nome, uma duração e uma descrição.
+- As durações das atividades deve somar a duração total do bloco.
+- É possível alternar entre blocos mesmo que a soma das atividades de um bloco não some sua duração total. No entanto, esse bloco fica visualmente sinalizado e não é possível alternar para o modo criação até que todos os blocos sejam corrigidos (as durações de suas atividades e todos os campos obrigatórios sejam preenchidos).
+- Há dois papeis de usuário no sistema: planejador e criador, e podem ser a mesma pessoa.
+- Esse papel varia conforme a criação.
+- O planejador consegue apenas planejar, enquanto o criador consegue planejar e criar.
+- Na fase inicial, ou seja, quando um planejamento é criado pela primeira vez, ele precisa passar por validação antes de habilitar o modo criação, mesmo que a mesma pessoa seja planejadora e criadora.
+- Após validado e aprovado, o modo criação é disponibilizado.
+- O criador pode alternar entre o modo planejamento e criação a qualquer momento, desde que siga as regras acima impostas.
+- Quando o criador alterna do modo criação para o modo planejamento, é exibido um aviso na tela, para confirmar a alteração de modo.
+- Esse mesmo aviso não é exibido quando se alterna do modo planejamento para o modo criação.
+- No modo planejamento, além de adicionar blocos e atividades (dentro dos blocos), é possível reordenar blocos e também as atividades dentro dos blocos.
+- Também é possível remover blocos e atividades, além de adicioná-los.
+- É possível adicionar blocos e atividades especiais chamados intervalos. Esses blocos e atividades não têm outros campos além de nome (com prefixo "Intervalo - " e duração.
+- Há dois blocos obrigatórios: abertura e encerramento.
+- Não é possível alterar o nome desses blocos.
+- A abertura e encerramento são compostos de atividades fixas, algumas obrigatórias e outras não.
+- É necessário selecionar quais atividades não obrigatórias farão parte daquele bloco (abertura e encerramento).
+- É possível também adicionar atividades personalizadas nesses bloco.
+- Para as atividades fixas (obrigatórias ou não), são exibidos somente os campos de duração e descrição da atividade.
+- Para as atividades personalizadas, é exibido também o campo nome.
+- Como existem atividades obrigatórias nesses blocos (abertura e encerramento), não é possível definir a duração do bloco, ou seja, a duração dele é a soma da duração de todas as suas atividades.
+- O modo criação exibe todos os blocos e atividades definidos para programação durante o planejamento no modo leitura.
+- No modo criação, navega-se na programação da mesma forma que se navegava no modo planejamento, clicando em cada bloco.
+- Na criação, não é possível reordenar blocos e atividades, nem alterar qualquer campo definido durante o planejamento, como nome, duração, etc.
+- A diferença está que, no modo criação, cada atividade dentro de cada bloco abre para edição um novo conjunto, chamado slides.
+- É obrigatório pelo menos um slide para cada atividade, sendo possível adicionar mais de um.
+- Cada slide é composto pelos campos: duração, título, conteúdo, orientações para o formador, notas do apresentador e um bloco para adicionar material de apoio.
+- O conteúdo do slide é um conjunto contendo uma seleção do tipo de slide (texto, texto e multimídia, multimídia, tabela, entre outros que serão definidos posteriormente) e um editor de texto rico que permite adicionar o texto ou conteúdo multimídia conforme o tipo de slide selecionado.
+- É possível adicionar nenhum ou vários materiais de apoio.
+- Cada material de apoio apresenta os campos: nome, tipo e link.
+- Os tipos de materiais de apoio podem ser digital, impressão ou papelaria.
+- Dependendo do tipo escolhido, novos campos podem ser exibidos.
+- Para o tipo digital, é exibido um campo de seleção ferramenta com as opções Padlet, Mentimeter, Quizziz, Kahoot, site externo ou outro. A seleção de outro abre um campo para definir o nome da ferramenta. A seleção de Mentimeter abre dois novos campos, sendo eles link de edição e link de resultados. A seleção de Quizziz ou Kahoot abre o campo link de edição.
+- Para o tipo impressão, são abertos os campos quantidade, multiplicador (sala, turma, grupo (se selecionado é preciso escolher a quantidade de grupos), cursista, formador), especificações de tipo (frente ou frente e verso), tamanho (A1, A2, A3, A4 ou A5), cor (colorido ou preto-e-branco), grampear (sim ou não) e observações.
+- Para o tipo papelaria, são abertos os campos material, quantidade, multiplicador (sala, turma, grupo (se selecionado é preciso escolher a quantidade de grupos), cursista, formador) e observações.
+- Cada slide exibe um preview de como ele vai ficar.
+- Os blocos e atividades do tipo intervalo já vêm com um slide com título definido, sendo o mesmo nome da atividade
+- Todos os blocos iniciam com um slide de transição obrigatório, cujo título é o nome do bloco. Esse slide não tem impacto na duração.
+- Abaixo da programação, há um botão de preview da formação, que exibe a visualização de todos os slides até o momento.
+- Só é possível finalizar/enviar para validação uma criação com todos os slides preenchidos.
