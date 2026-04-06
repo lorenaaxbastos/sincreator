@@ -16,7 +16,7 @@ This component gives details to the planner/author about generic information abo
 - Should be semantically structured as a \`<section>\` linked to its title via \`aria-labelledby\`
 - Should render a title named "Dados da formação"
 - Should be semantically structured using a Description List (\`<dl>\`, \`<dt>\`, \`<dd>\`)
-- Should render the training name, format, duration, target, number of participants, number of sessions, date(s), hour(s), and place
+- Should render the training name, format, duration, target, number of participants, number of sessions, number of trainers, date(s), hour(s), place and number of rooms
 - Should display whether sessions are simultaneous ONLY if \`qtySessions\` is greater than 1
 - Should hide any specific field (label and value) if its data is missing (null, undefined, or empty)
 - Should not render the component if all valid entries are empty
@@ -37,10 +37,12 @@ export const CompleteSingleSession: Story = {
       duration: 8,
       qtyPeople: 40,
       qtySessions: 1,
+      qtyTrainers: 2,
       isAtTheSameTime: false,
       target: 'Professores do Pará',
       dateAndHour: '25/02/2025 08:00:00',
       place: 'Estádio municipal',
+      qtyRooms: 2,
     },
   },
 };
@@ -53,10 +55,12 @@ export const MultipleSessions: Story = {
       duration: 20,
       qtyPeople: 100,
       qtySessions: 5,
+      qtyTrainers: 5,
       isAtTheSameTime: true,
       target: 'Coordenadores',
       dateAndHour: 'Várias datas',
       place: 'Google Meet',
+      qtyRooms: 5,
     },
   },
 };

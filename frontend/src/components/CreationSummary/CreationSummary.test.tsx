@@ -8,10 +8,12 @@ describe('CreationSummary component', () => {
     duration: 8,
     qtyPeople: 40,
     qtySessions: 2,
+    qtyTrainers: 1,
     isAtTheSameTime: false,
     target: 'Professores do Pará',
     dateAndHour: '25/02/2025 08:00:00',
     place: 'Estádio municipal',
+    qtyRooms: 3,
   };
 
   it('should be semantically structured as a <section> linked to its title via aria-labelledby', () => {
@@ -46,7 +48,7 @@ describe('CreationSummary component', () => {
     expect(description.tagName).toBe('DD');
   });
 
-  it('should render the training name, format, duration, target, number of participants, number of sessions, date(s), hour(s), and place', () => {
+  it('should render the training name, format, duration, target, number of participants, number of sessions, number of trainers, date(s), hour(s), place and number of rooms', () => {
     render(<CreationSummary data={mockContent} />);
 
     expect(screen.getByText(/nome/i)).toBeInTheDocument();
@@ -64,10 +66,12 @@ describe('CreationSummary component', () => {
     expect(screen.getByText('8')).toBeInTheDocument();
     expect(screen.getByText('40')).toBeInTheDocument();
     expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByText('Assíncrona')).toBeInTheDocument();
     expect(screen.getByText(/professores/i)).toBeInTheDocument();
     expect(screen.getByText(/25/i)).toBeInTheDocument();
     expect(screen.getByText(/estádio/i)).toBeInTheDocument();
+    expect(screen.getByText('3')).toBeInTheDocument();
   });
 
   it('should display whether sessions are simultaneous ONLY if qtySessions is greater than 1', () => {
