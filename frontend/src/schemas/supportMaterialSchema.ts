@@ -172,7 +172,12 @@ export const supportMaterialSchema = z.discriminatedUnion(
   'type',
   [stationerySchema, printSchema, digitalSchema],
   {
-    error: iss => (iss.input === undefined ? 'Tipo é obrigatório' : 'Tipo inválido'),
+    error: iss => {
+      const input = iss.input as { type?: unknown } | undefined;
+
+      if (input?.type === undefined) return 'Tipo é obrigatório';
+      return 'Tipo inválido';
+    },
   },
 );
 

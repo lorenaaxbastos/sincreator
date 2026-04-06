@@ -72,6 +72,16 @@ describe('supportMaterial schema', () => {
       if (!result.success) expect(result.error.issues[0].path[0]).toBe('type');
     });
 
+    it('should fail if type is missing', () => {
+      const { type: _type, ...data } = mockObject;
+      const result = supportMaterialSchema.safeParse(data);
+
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.issues[0].message).toBe('Tipo é obrigatório');
+      }
+    });
+
     it('should fail if url is not a valid http/https domain', () => {
       const data = { ...mockObject, url: 'https://localhost:3000' };
       const result = supportMaterialSchema.safeParse(data);
@@ -185,6 +195,13 @@ describe('supportMaterial schema', () => {
     it('should validate if notes is an empty string', () => {
       const data = { ...mockObject, notes: '' };
       const result = distributionSchema.safeParse(data);
+      expect(result.success).toBe(true);
+    });
+
+    it('should validate when notes is completely omitted (optional)', () => {
+      const { notes: _notes, ...data } = mockObject;
+      const result = distributionSchema.safeParse(data);
+
       expect(result.success).toBe(true);
     });
   });
