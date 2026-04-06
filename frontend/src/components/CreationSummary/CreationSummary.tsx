@@ -1,16 +1,5 @@
 import styles from './CreationSummary.module.css';
-
-export interface CreationSummaryData {
-  name?: string | null;
-  format?: string | null;
-  duration?: number | null;
-  qtyPeople?: number | null;
-  qtySessions?: number | null;
-  isAtTheSameTime?: boolean | null;
-  target?: string | null;
-  dateAndHour?: string | null;
-  place?: string | null;
-}
+import type { CreationSummary as CreationSummaryData } from '../../stores/useCreationStore';
 
 interface CreationSummaryProps {
   data: CreationSummaryData;
@@ -22,10 +11,12 @@ const SUMMARY_MAP = {
   duration: 'Duração',
   qtyPeople: 'Quantidade de participantes',
   qtySessions: 'Quantidade de turmas',
+  qtyTrainers: 'Quantidade de formadores',
   isAtTheSameTime: 'Tipo de aplicação',
   target: 'Público-alvo',
   dateAndHour: 'Data(s) e horário(s)',
   place: 'Local',
+  qtyRooms: 'Quantidade de salas',
 };
 
 export const CreationSummary = ({ data }: CreationSummaryProps) => {
