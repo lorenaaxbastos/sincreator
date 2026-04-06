@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run --coverage",
-    "test:watch": "vitest",
+    "test:watch": "vitest --coverage",
     "storybook": "storybook dev -p 6006 --host 0.0.0.0",
     "build-storybook": "storybook build",
     "test:e2e": "playwright test",
@@ -17,9 +17,13 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "lucide-react": "^1.7.0",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "react-hook-form": "^7.72.1",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.2",
