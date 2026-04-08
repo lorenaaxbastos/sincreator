@@ -72,6 +72,7 @@
 :root {
   /* Colors */
   --color-bg-canvas: var(--color-offwhite);
+  --color-bg-canvas-inverse: var(--color-gray700);
   --color-bg-sidebar: var(--color-cyan);
   --color-bg-tablerow: var(--color-gray200);
   --color-text-title: var(--color-gray900);
@@ -87,6 +88,7 @@
 [data-theme='dark'] {
   /* Colors */
   --color-bg-canvas: var(--color-gray900);
+  --color-bg-canvas-inverse: var(--color-gray50);
   --color-bg-sidebar: var(--color-gray800);
   --color-bg-tablerow: var(--color-gray800);
   --color-text-title: var(--color-gray50);
