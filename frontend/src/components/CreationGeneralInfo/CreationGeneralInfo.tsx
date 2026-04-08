@@ -1,9 +1,11 @@
 import { Info, SquareSplitHorizontal, SquaresUnite } from 'lucide-react';
+import { Button } from '../Button/Button';
 import { CreationBriefing } from '../CreationBriefing/CreationBriefing';
 import { CreationSummary } from '../CreationSummary/CreationSummary';
+import { Tooltip } from '../Tooltip/Tooltip';
 import styles from './CreationGeneralInfo.module.css';
+import type { CreationSummary as CreationSummaryData } from '../../stores/useCreationStore';
 import type { CreationBriefingProps } from '../CreationBriefing/CreationBriefing';
-import type { CreationSummaryData } from '../CreationSummary/CreationSummary';
 
 interface CreationGeneralInfoProps {
   summaryData?: CreationSummaryData | null;
@@ -26,6 +28,7 @@ export const CreationGeneralInfo = ({
   if (!hasSummary && !hasBriefing) return null;
 
   const Icon = isSplitScreen ? SquaresUnite : SquareSplitHorizontal;
+  const toggleLabel = isSplitScreen ? 'Unificar tela' : 'Dividir tela';
 
   return (
     <section
@@ -36,13 +39,25 @@ export const CreationGeneralInfo = ({
         <h2 className={styles.title} id="creation-general-info-heading">
           Sobre a <span>formação</span>
         </h2>
-        <button onClick={onToggleSplitScreen} className={styles.button} aria-label="Dividir tela">
-          <Icon className={styles.icon} aria-hidden="true" size={24} />
-          <span className={styles.tooltip} aria-hidden="true">
-            <Info size={16} />
-            {isSplitScreen ? 'Unificar tela' : 'Dividir tela'}
-          </span>
-        </button>
+
+        <Tooltip
+          position="left"
+          content={
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+              <Info size={14} aria-hidden="true" />
+              <span>{toggleLabel}</span>
+            </div>
+          }
+        >
+          <Button
+            onClick={onToggleSplitScreen}
+            variant="alert"
+            size="icon"
+            aria-label={toggleLabel}
+          >
+            <Icon aria-hidden="true" size={24} />
+          </Button>
+        </Tooltip>
       </div>
       <div className={styles.content}>
         {hasSummary && <CreationSummary data={summaryData} />}
