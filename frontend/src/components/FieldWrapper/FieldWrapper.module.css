@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  width: fit-content;
+  font-weight: var(--font-weight-semi);
+  font-size: var(--font-size-body);
+  cursor: pointer;
+}
+
+.errorMessage {
+  font-weight: var(--font-weight-semi);
+  font-size: var(--font-size-caption);
+  color: var(--color-pink);
+}
