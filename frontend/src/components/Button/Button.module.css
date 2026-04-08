@@ -1,0 +1,130 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: var(--font-weight-semi);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+  transition:
+    all var(--transition-smooth),
+    transform var(--transition-fast);
+  cursor: pointer;
+  outline: none;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-cyan-light), var(--color-cyan) 15%);
+  }
+
+  &:not(:disabled):active {
+    transform: scale(0.96) translateY(2px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sm {
+  padding: var(--space-xxs) var(--space-xs);
+  font-size: var(--font-size-caption);
+}
+
+.md {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-body);
+}
+
+.lg {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-subheading);
+}
+
+.icon {
+  padding: 0.8rem;
+  aspect-ratio: 1;
+  justify-content: center;
+}
+
+.default {
+  color: var(--color-white);
+  background-color: var(--color-blue);
+
+  &:not(:disabled):hover {
+    background-color: color-mix(in srgb, var(--color-blue), var(--color-black) 15%);
+  }
+}
+
+.outline {
+  color: var(--color-blue);
+  background-color: transparent;
+  border-color: var(--color-blue);
+
+  &:not(:disabled):hover {
+    background-color: var(--color-blue-light);
+  }
+}
+
+.ghost {
+  color: var(--color-text-body);
+  background-color: var(--color-gray200);
+
+  &:not(:disabled):hover {
+    background-color: var(--color-gray300);
+  }
+}
+
+.alert {
+  color: var(--color-white);
+  background-color: var(--color-pink);
+
+  &:not(:disabled):hover {
+    background-color: color-mix(in srgb, var(--color-pink), var(--color-black) 10%);
+  }
+}
+
+.link {
+  text-decoration: underline;
+  font-weight: var(--font-weight-regular);
+  background-color: transparent;
+  color: var(--color-cyan);
+  border: none;
+
+  &:not(.icon) {
+    padding: 0;
+    height: auto;
+  }
+
+  &:not(:disabled):hover {
+    color: var(--color-blue);
+  }
+
+  &:not(:disabled):active {
+    transform: none;
+  }
+}
+
+.loading {
+  cursor: wait !important;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
