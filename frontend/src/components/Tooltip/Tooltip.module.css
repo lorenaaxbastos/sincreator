@@ -1,0 +1,135 @@
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltipBubble {
+  position: absolute;
+  z-index: 50;
+  width: max-content;
+  max-width: 25rem;
+  padding: var(--space-xxs) var(--space-xs);
+  font-family: inherit;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-white);
+  background-color: var(--color-bg-canvas-inverse);
+  text-align: center;
+  border-radius: var(--border-radius-sm);
+  pointer-events: none;
+}
+
+.top {
+  bottom: calc(100% + 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeInTop 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--color-bg-canvas-inverse) transparent transparent transparent;
+  }
+}
+
+.bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeInBottom 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--color-bg-canvas-inverse) transparent;
+  }
+}
+
+.right {
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+  animation: fadeInRight 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--color-bg-canvas-inverse) transparent transparent;
+  }
+}
+
+.left {
+  top: 50%;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+  animation: fadeInLeft 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--color-bg-canvas-inverse);
+  }
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate(-2rem, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate(2rem, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
