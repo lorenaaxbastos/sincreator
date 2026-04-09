@@ -122,4 +122,24 @@ describe('Select', () => {
     await user.tab();
     expect(handleBlur).toHaveBeenCalledTimes(1);
   });
+
+  it('should act as a controlled component when the value prop is provided', async () => {
+    const user = userEvent.setup();
+    const handleChange = vi.fn();
+
+    const { rerender } = render(
+      <Select options={mockOptions} aria-label="Controlado" value="A1" onChange={handleChange} />,
+    );
+
+    const selectElement = screen.getByLabelText('Controlado');
+    expect(selectElement).toHaveValue('A1');
+
+    await user.selectOptions(selectElement, 'A2');
+    expect(handleChange).toHaveBeenCalled();
+
+    rerender(
+      <Select options={mockOptions} aria-label="Controlado" value="A2" onChange={handleChange} />,
+    );
+    expect(selectElement).toHaveValue('A2');
+  });
 });

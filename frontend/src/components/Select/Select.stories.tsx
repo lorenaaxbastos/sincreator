@@ -14,6 +14,7 @@ const meta = {
 This component is a native, accessible select input designed to integrate seamlessly with forms. It is designed to be used inside a \`FieldWrapper\`.
 
 - Should use \`React.forwardRef\` to correctly receive and attach refs from form libraries.
+- Should act as a controlled or uncontrolled component (supporting both \`value\` and \`defaultValue\`).
 - Should accept an array of \`options\` (value and label).
 - Should optionally display a \`placeholder\` as a disabled, unselectable first option.
 - Should accept standard HTML select attributes (disabled, defaultValue, etc.).
