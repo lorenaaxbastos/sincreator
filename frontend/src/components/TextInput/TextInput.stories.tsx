@@ -14,6 +14,7 @@ const meta = {
 This component is a generic, accessible text input designed to integrate seamlessly with forms (e.g., React Hook Form). It is designed to be used inside a \`FieldWrapper\`.
 
 - Should use \`React.forwardRef\` to correctly receive and attach refs from form libraries.
+- Should act as a controlled or uncontrolled component (supporting both \`value\` and \`defaultValue\`).
 - Should accept all standard HTML input attributes (placeholder, disabled, type, etc.) and pass them to the underlying \`<input>\`.
 - Should apply appropriate accessibility attributes when in an error state (e.g., \`aria-invalid="true"\` and \`aria-errormessage\` linked to the error text ID).
 - Should apply specific visual styling for different states: default, focused, disabled, and error (e.g., red border for errors).

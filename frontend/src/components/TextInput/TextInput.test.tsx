@@ -108,4 +108,21 @@ describe('TextInput', () => {
     await user.tab();
     expect(handleBlur).toHaveBeenCalledTimes(1);
   });
+
+  it('should act as a controlled component when the value prop is provided', async () => {
+    const user = userEvent.setup();
+    const handleChange = vi.fn();
+    const { rerender } = render(
+      <TextInput placeholder="Controlado" value="inicial" onChange={handleChange} />,
+    );
+
+    const inputElement = screen.getByPlaceholderText('Controlado');
+    expect(inputElement).toHaveValue('inicial');
+
+    await user.type(inputElement, 'a');
+    expect(handleChange).toHaveBeenCalled();
+
+    rerender(<TextInput placeholder="Controlado" value="iniciala" onChange={handleChange} />);
+    expect(inputElement).toHaveValue('iniciala');
+  });
 });
