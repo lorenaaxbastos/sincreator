@@ -55,12 +55,12 @@
 }
 
 .passwordInput {
-  padding-right: 4rem;
+  padding-right: 5rem;
 }
 
 .toggleButton {
   position: absolute;
-  right: 0.5rem;
+  right: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
