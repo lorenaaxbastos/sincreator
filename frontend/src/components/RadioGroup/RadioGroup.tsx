@@ -68,8 +68,6 @@ export const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(
         {options.map((option, index) => {
           const isOptionDisabled = disabled || option.disabled;
           const isChecked = currentValue === option.value;
-
-          // Atribuímos a ref apenas ao último elemento para satisfazer bibliotecas de formulários
           const isLast = index === options.length - 1;
 
           return (

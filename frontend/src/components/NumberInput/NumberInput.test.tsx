@@ -220,7 +220,6 @@ describe('NumberInput', () => {
 
     expect(handleChange).toHaveBeenCalled();
 
-    // Pegamos a última chamada da função e garantimos o tipo com "unknown" antes
     const lastCallArgs = handleChange.mock.lastCall as unknown as [{ target: { value: string } }];
     expect(lastCallArgs[0].target.value).toBe('10');
   });
