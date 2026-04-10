@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from 'react';
+import { forwardRef, useId, useRef } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import styles from './Checkbox.module.css';
 
@@ -9,7 +9,10 @@ export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, hasError, indeterminate, className, disabled, ...props }, ref) => {
+  ({ id, label, hasError, indeterminate, className, disabled, ...props }, ref) => {
+    const generatedId = useId();
+    const controlId = id ?? generatedId;
+    const errorId = `${controlId}-error`;
     const innerRef = useRef<HTMLInputElement | null>(null);
 
     const setRefs = (node: HTMLInputElement | null) => {
@@ -42,10 +45,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <label className={wrapperClasses}>
         <div className={styles.checkboxContainer}>
           <input
+            id={controlId}
             type="checkbox"
             ref={setRefs}
             disabled={disabled}
             className={styles.input}
+            aria-invalid={!!hasError}
+            aria-errormessage={hasError ? errorId : undefined}
             {...props}
           />
           <div className={styles.control} aria-hidden="true" />

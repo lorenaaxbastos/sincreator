@@ -18,7 +18,7 @@ This component is a native, accessible select input designed to integrate seamle
 - Should accept an array of \`options\` (value and label).
 - Should optionally display a \`placeholder\` as a disabled, unselectable first option.
 - Should accept standard HTML select attributes (disabled, defaultValue, etc.).
-- Should apply appropriate accessibility attributes when in an error state (\`aria-invalid="true"\` and \`aria-errormessage\`).
+- Should apply appropriate accessibility attributes when in an error state (e.g., \`aria-invalid="true"\` and \`aria-errormessage\` linked to the error text ID).
 - Should apply specific visual styling for different states: default, focused, disabled, and error.
         `,
       },

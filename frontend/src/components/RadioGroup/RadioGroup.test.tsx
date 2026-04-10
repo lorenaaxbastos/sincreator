@@ -37,6 +37,27 @@ describe('RadioGroup', () => {
     expect(screen.getByTestId('custom-label')).toBeInTheDocument();
   });
 
+  it('should generate an ID automatically and apply it to the first radio input if no ID is provided', () => {
+    render(<RadioGroup name="Campo Sem ID" options={mockOptions} />);
+
+    const radios = screen.getAllByRole('radio');
+
+    expect(radios[0].getAttribute('id')).toBeTruthy();
+    expect(radios[1].getAttribute('id')).toBeNull();
+  });
+
+  it('should apply accessibility attributes and styles when hasError is true', () => {
+    const { container } = render(
+      <RadioGroup id="meu-combobox" name="com-erro" hasError options={mockOptions} />,
+    );
+
+    const wrapper = container.firstChild as HTMLElement;
+
+    expect(wrapper).toHaveAttribute('aria-invalid', 'true');
+    expect(wrapper).toHaveAttribute('aria-errormessage', 'meu-combobox-error');
+    expect(wrapper).toHaveClass(styles.error);
+  });
+
   it('should forward the ref correctly to the input elements', () => {
     const ref = createRef<HTMLInputElement>();
     render(<RadioGroup name="ref_test" options={mockOptions} ref={ref} aria-label="Grupo" />);
@@ -98,15 +119,6 @@ describe('RadioGroup', () => {
       />,
     );
     expect(horizontalContainer.firstChild).toHaveClass(styles.horizontal);
-  });
-
-  it('should apply error styles when hasError is true', () => {
-    const { container } = render(
-      <RadioGroup name="error_test" options={mockOptions} hasError aria-label="Erro" />,
-    );
-
-    const wrapper = container.firstChild as HTMLElement;
-    expect(wrapper).toHaveClass(styles.error);
   });
 
   it('should act as an uncontrolled component by respecting defaultValue', () => {

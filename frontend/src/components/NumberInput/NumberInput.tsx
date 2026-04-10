@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import type {
   ChangeEvent,
   FocusEvent,
@@ -16,6 +16,7 @@ export interface NumberInputProps extends Omit<InputHTMLAttributes<HTMLInputElem
 export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   (
     {
+      id,
       className,
       hasError = false,
       min,
@@ -31,6 +32,10 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     },
     ref,
   ) => {
+    const generatedId = useId();
+    const controlId = id ?? generatedId;
+    const errorId = `${controlId}-error`;
+
     const isControlled = value !== undefined;
 
     const [uncontrolledValue, setUncontrolledValue] = useState<string>(() => {
@@ -131,6 +136,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         </button>
 
         <input
+          id={controlId}
           ref={ref}
           type="text"
           inputMode="numeric"
@@ -143,6 +149,8 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           min={min}
           max={max}
           step={step}
+          aria-invalid={hasError}
+          aria-errormessage={hasError ? errorId : undefined}
           {...props}
         />
 

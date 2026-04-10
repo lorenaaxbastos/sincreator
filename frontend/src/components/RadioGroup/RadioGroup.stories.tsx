@@ -20,6 +20,7 @@ This component renders a group of mutually exclusive radio buttons. It is design
 - Should allow individual options to be disabled via the \`options\` array, even if the group itself is not fully disabled.
 - Should support an \`orientation\` prop (\`vertical\` or \`horizontal\`) to control the layout of the radio buttons (default is \`vertical\`).
 - Should accept a \`hasError\` prop to apply error styling (e.g., red text/borders) to the group.
+- Should apply appropriate accessibility attributes when in an error state (\`aria-invalid="true"\` and \`aria-errormessage\`).
 - Should act as a controlled or uncontrolled component (supporting both \`value\` and \`defaultValue\`).
 - Should be fully accessible, utilizing \`role="radiogroup"\` (or \`<fieldset>\`) and properly linking inputs to their respective labels.
         `,

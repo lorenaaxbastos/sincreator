@@ -5,6 +5,24 @@ import { Checkbox } from './Checkbox';
 import styles from './Checkbox.module.css';
 
 describe('Checkbox', () => {
+  it('should generate an ID automatically if no ID is provided', () => {
+    render(<Checkbox label="Termos de uso" />);
+
+    const checkboxElement = screen.getByLabelText('Termos de uso');
+
+    const generatedId = checkboxElement.getAttribute('id');
+    expect(generatedId).toBeTruthy();
+  });
+
+  it('should respect provided ID and link error message accordingly', () => {
+    render(<Checkbox id="aceite-termos" label="Aceito" hasError />);
+
+    const checkboxElement = screen.getByLabelText('Aceito');
+
+    expect(checkboxElement).toHaveAttribute('id', 'aceite-termos');
+    expect(checkboxElement).toHaveAttribute('aria-errormessage', 'aceite-termos-error');
+  });
+
   it('should render the checkbox with a text label', () => {
     render(<Checkbox label="Aceitar termos" />);
 

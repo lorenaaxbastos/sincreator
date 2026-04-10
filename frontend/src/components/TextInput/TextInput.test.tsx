@@ -33,7 +33,7 @@ describe('TextInput', () => {
   });
 
   it('should apply accessibility attributes and styles when hasError is true', () => {
-    render(<TextInput id="meu-input" placeholder="Link da ferramenta" hasError={true} />);
+    render(<TextInput id="meu-input" placeholder="Link da ferramenta" hasError />);
 
     const inputElement = screen.getByPlaceholderText('Link da ferramenta');
 

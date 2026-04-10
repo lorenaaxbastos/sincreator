@@ -23,6 +23,7 @@ This component is a numeric input in a "stepper" style, ideal for controlling qu
 - Should fallback to the \`min\` value (or 0) on blur if the input is left empty.
 - Should handle a \`disabled\` state, visually and functionally disabling the input and both buttons.
 - Should accept a \`hasError\` prop to apply error styling (e.g., red borders).
+  - Should apply appropriate accessibility attributes when in an error state (\`aria-invalid="true"\` and \`aria-errormessage\`).
 - Should be fully accessible, allowing \`aria-label\` for the input and including descriptive aria-labels for the buttons (e.g., "Diminuir valor", "Aumentar valor").
         `,
       },

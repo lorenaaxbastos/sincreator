@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 import styles from './RadioGroup.module.css';
 
@@ -25,6 +25,7 @@ export interface RadioGroupProps extends Omit<
 export const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(
   (
     {
+      id,
       name,
       options,
       orientation = 'vertical',
@@ -38,6 +39,10 @@ export const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(
     },
     ref,
   ) => {
+    const generatedId = useId();
+    const controlId = id ?? generatedId;
+    const errorId = `${controlId}-error`;
+
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue ?? '');
 
@@ -64,10 +69,17 @@ export const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(
       .join(' ');
 
     return (
-      <div role="radiogroup" className={wrapperClasses} {...props}>
+      <div
+        role="radiogroup"
+        className={wrapperClasses}
+        aria-invalid={hasError}
+        aria-errormessage={hasError ? errorId : undefined}
+        {...props}
+      >
         {options.map((option, index) => {
           const isOptionDisabled = disabled || option.disabled;
           const isChecked = currentValue === option.value;
+          const isFirst = index === 0;
           const isLast = index === options.length - 1;
 
           return (
@@ -76,6 +88,7 @@ export const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(
               className={`${styles.item} ${isOptionDisabled ? styles.itemDisabled : ''}`}
             >
               <input
+                id={isFirst ? controlId : undefined}
                 ref={isLast ? ref : undefined}
                 type="radio"
                 name={name}

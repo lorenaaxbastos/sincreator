@@ -5,6 +5,25 @@ import { NumberInput } from './NumberInput';
 import styles from './NumberInput.module.css';
 
 describe('NumberInput', () => {
+  it('should generate an ID automatically if no ID is provided', () => {
+    render(<NumberInput aria-label="Campo Sem ID" />);
+    const inputElement = screen.getByLabelText('Campo Sem ID');
+    expect(inputElement.getAttribute('id')).toBeTruthy();
+  });
+
+  it('should apply accessibility attributes and styles when hasError is true', () => {
+    const { container } = render(
+      <NumberInput id="meu-input-numerico" hasError={true} aria-label="Com Erro" />,
+    );
+
+    const wrapper = container.firstChild as HTMLElement;
+    expect(wrapper).toHaveClass(styles.error);
+
+    const inputElement = screen.getByLabelText('Com Erro');
+    expect(inputElement).toHaveAttribute('aria-invalid', 'true');
+    expect(inputElement).toHaveAttribute('aria-errormessage', 'meu-input-numerico-error');
+  });
+
   it('should forward the ref correctly to the input element', () => {
     const ref = createRef<HTMLInputElement>();
     render(<NumberInput ref={ref} aria-label="Input Numérico" />);

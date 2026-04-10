@@ -19,6 +19,7 @@ This component renders a standard checkbox input, ideal for form submissions, te
 - Should support an \`indeterminate\` state, visually representing a partially selected group (e.g., a "Select All" parent checkbox).
 - Should support a \`disabled\` state, visually and functionally disabling the input and its label.
 - Should accept an \`hasError\` prop to apply error styling (e.g., red borders/text).
+- Should apply appropriate accessibility attributes when in an error state (\`aria-invalid="true"\` and \`aria-errormessage\`).
 - Should be fully accessible, allowing users to toggle it via keyboard (Space) and properly linking the label to the input.
         `,
       },
