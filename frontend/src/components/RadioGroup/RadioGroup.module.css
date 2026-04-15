@@ -30,6 +30,7 @@
 }
 
 .radio {
+  flex-shrink: 0;
   display: grid;
   place-content: center;
   width: 1.6rem;
