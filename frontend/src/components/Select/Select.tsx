@@ -25,6 +25,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select
           id={selectId}
           ref={ref}
+          defaultValue={placeholder ? '' : undefined}
           aria-invalid={!!hasError}
           aria-errormessage={hasError ? errorId : undefined}
           className={`${styles.select} ${hasError ? styles.error : ''} ${className ?? ''}`.trim()}
