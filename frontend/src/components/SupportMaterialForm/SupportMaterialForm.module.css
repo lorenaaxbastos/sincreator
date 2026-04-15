@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.flexRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.autoCol {
+  width: auto !important;
+  flex: 0 0 auto;
+}
+
+.flexGrowCol {
+  flex: 1 1 15rem;
+}
+
+.grid3Col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
+}
