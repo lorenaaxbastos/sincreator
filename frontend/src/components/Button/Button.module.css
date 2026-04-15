@@ -3,6 +3,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
   font-family: inherit;
   font-weight: var(--font-weight-semi);
   border: 1px solid transparent;
