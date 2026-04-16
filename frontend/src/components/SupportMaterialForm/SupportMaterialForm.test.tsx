@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import { useCreationStore } from '../../stores/useCreationStore';
+import { useCreationStore } from '../../store/useCreationStore';
 import { SupportMaterialForm } from './SupportMaterialForm';
 import type { SupportMaterial } from '../../schemas/supportMaterialSchema';
 
-vi.mock('../../stores/useCreationStore', () => ({
+vi.mock('../../store/useCreationStore', () => ({
   useCreationStore: vi.fn(),
 }));
 

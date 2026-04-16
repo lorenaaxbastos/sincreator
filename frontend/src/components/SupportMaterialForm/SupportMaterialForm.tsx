@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, useWatch, Controller } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
 import { supportMaterialSchema } from '../../schemas/supportMaterialSchema';
-import { useCreationStore } from '../../stores/useCreationStore';
+import { useCreationStore } from '../../store/useCreationStore';
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { FieldWrapper } from '../FieldWrapper/FieldWrapper';
