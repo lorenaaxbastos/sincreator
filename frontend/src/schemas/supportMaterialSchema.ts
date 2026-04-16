@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { urlValidationRule } from './sharedSchemas';
 
 interface DistributionValidationData {
   multiplier: string;
@@ -12,16 +13,6 @@ const baseMaterialSchema = z.object({
     .trim()
     .min(3, 'O nome do material de apoio deve ter pelo menos 3 caracteres')
     .max(255, 'O nome do material de apoio deve ter no máximo 255 caracteres.'),
-});
-
-const urlSchema = z.object({
-  url: z
-    .url({
-      protocol: /^https?$/,
-      hostname: z.regexes.domain,
-      error: 'A url deve ter um protocolo http/https e um domínio válido',
-    })
-    .max(2048, 'A url deve ter no máximo 2048 caracteres'),
 });
 
 const distributionShape = {
@@ -69,9 +60,9 @@ const stationerySchema = baseMaterialSchema
   .superRefine(validateGroupMultiplier);
 
 const printSchema = baseMaterialSchema
-  .extend(urlSchema.shape)
   .extend(distributionShape)
   .extend({
+    url: urlValidationRule,
     type: z.literal('Impressão'),
     sides: z.enum(['Frente', 'Frente e verso'], 'Tipo de impressão inválida'),
     size: z.enum(['A1', 'A2', 'A3', 'A4', 'A5'], 'Tamanho inválido'),
@@ -81,11 +72,9 @@ const printSchema = baseMaterialSchema
   .strict()
   .superRefine(validateGroupMultiplier);
 
-const urlFieldRule = urlSchema.shape.url;
-
 const digitalSchema = baseMaterialSchema
-  .extend(urlSchema.shape)
   .extend({
+    url: urlValidationRule,
     type: z.literal('Digital'),
     tool: z.enum(
       ['Padlet', 'Mentimeter', 'Quizizz', 'Kahoot', 'Site', 'Outro'],
@@ -97,8 +86,8 @@ const digitalSchema = baseMaterialSchema
       .min(2, 'O nome da ferramenta deve ter pelo menos 2 caracteres')
       .max(100, 'O nome da ferramenta deve ter no máximo 100 caracteres')
       .optional(),
-    editUrl: urlFieldRule.optional(),
-    resultsUrl: urlFieldRule.optional(),
+    editUrl: urlValidationRule.optional(),
+    resultsUrl: urlValidationRule.optional(),
   })
   .strict()
   .superRefine((data, ctx) => {

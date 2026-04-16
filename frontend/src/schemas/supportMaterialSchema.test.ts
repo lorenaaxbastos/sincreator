@@ -1,7 +1,7 @@
 import { supportMaterialSchema, distributionSchema } from './supportMaterialSchema';
 
 describe('supportMaterial schema', () => {
-  describe('Base validation (id, name, url and type)', () => {
+  describe('Base validation (id, name and type)', () => {
     const mockObject = {
       id: '4a8eabb0-9a98-4562-9b17-691d308cfe3f',
       name: 'Atividade - Conectando objetivos',
@@ -12,7 +12,6 @@ describe('supportMaterial schema', () => {
 
     it('should validate a correct supportMaterial object', () => {
       const result = supportMaterialSchema.safeParse(mockObject);
-
       expect(result.success).toBe(true);
     });
 
@@ -80,27 +79,6 @@ describe('supportMaterial schema', () => {
       if (!result.success) {
         expect(result.error.issues[0].message).toBe('Tipo é obrigatório');
       }
-    });
-
-    it('should fail if url is not a valid http/https domain', () => {
-      const data = { ...mockObject, url: 'https://localhost:3000' };
-      const result = supportMaterialSchema.safeParse(data);
-
-      expect(result.success).toBe(false);
-      if (!result.success) expect(result.error.issues[0].path[0]).toBe('url');
-    });
-
-    it('should fail if url has more than 2048 characters', () => {
-      const overLimitUrl = 'https://example.com/' + 'a'.repeat(2029);
-
-      const data = {
-        ...mockObject,
-        url: overLimitUrl,
-      };
-      const result = supportMaterialSchema.safeParse(data);
-
-      expect(result.success).toBe(false);
-      if (!result.success) expect(result.error.issues[0].path[0]).toBe('url');
     });
   });
 
