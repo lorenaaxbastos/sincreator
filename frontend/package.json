@@ -18,6 +18,13 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@tiptap/extension-character-count": "^3.22.3",
+    "@tiptap/extension-highlight": "^3.22.3",
+    "@tiptap/extension-link": "^3.22.3",
+    "@tiptap/pm": "^3.22.3",
+    "@tiptap/react": "^3.22.3",
+    "@tiptap/starter-kit": "^3.22.3",
+    "immer": "^11.1.4",
     "lucide-react": "^1.7.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
